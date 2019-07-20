@@ -10,8 +10,11 @@ class App extends React.Component {
       breedList: [],
       filteredBreedList: [],
       dogImages: [],
+      cachedDogImages: {},
+      lastClicked: '',
     }
     this.listSize = 12;
+    this.cachedDogImages = {};
   }
 
   componentDidMount() {
@@ -41,16 +44,27 @@ class App extends React.Component {
   }
 
   handleButtonClick(breed) {
-    console.log(breed);
-    fetch(`https://dog.ceo/api/breed/${breed}/images`)
-      .then((res) => {
-        return res.json();
+    if (this.state.cachedDogImages[breed]) {
+      this.setState({
+        dogImages: this.state.cachedDogImages[breed],
+        lastClicked: breed,
       })
-      .then((json) => {
-        this.setState({
-          dogImages: json.message,
+    } else {
+      fetch(`https://dog.ceo/api/breed/${breed}/images`)
+        .then((res) => {
+          return res.json();
+        })
+        .then((json) => {
+          if (!this.cachedDogImages[breed]) {
+            this.cachedDogImages[breed] = json.message;
+          }
+          this.setState({
+            dogImages: json.message,
+            cachedDogImages: this.cachedDogImages,
+            lastClicked: breed,
+          });
         });
-      });
+    }
   }
 
   render() {
@@ -61,7 +75,8 @@ class App extends React.Component {
         </h1>
         <BreedSearch searchBreedList={this.searchBreedList.bind(this)}></BreedSearch>
         <BreedList breedList={this.state.filteredBreedList}
-                   handleButtonClick={this.handleButtonClick.bind(this)}></BreedList>
+                   handleButtonClick={this.handleButtonClick.bind(this)}
+                   lastClicked={this.state.lastClicked}></BreedList>
         <DogImagesList dogImages={this.state.dogImages}></DogImagesList>
       </React.Fragment>
     )
