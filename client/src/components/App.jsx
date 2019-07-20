@@ -1,6 +1,7 @@
 import React from 'react';
 import BreedList from './BreedList.jsx'
 import BreedSearch from './BreedSearch.jsx'
+import DogImagesList from './DogImagesList.jsx'
 
 class App extends React.Component {
   constructor() {
@@ -8,6 +9,7 @@ class App extends React.Component {
     this.state = {
       breedList: [],
       filteredBreedList: [],
+      dogImages: [],
     }
     this.listSize = 12;
   }
@@ -38,6 +40,19 @@ class App extends React.Component {
     });
   }
 
+  handleButtonClick(breed) {
+    console.log(breed);
+    fetch(`https://dog.ceo/api/breed/${breed}/images`)
+      .then((res) => {
+        return res.json();
+      })
+      .then((json) => {
+        this.setState({
+          dogImages: json.message,
+        });
+      });
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -45,7 +60,9 @@ class App extends React.Component {
           Breed Names
         </h1>
         <BreedSearch searchBreedList={this.searchBreedList.bind(this)}></BreedSearch>
-        <BreedList breedList={this.state.filteredBreedList}></BreedList>
+        <BreedList breedList={this.state.filteredBreedList}
+                   handleButtonClick={this.handleButtonClick.bind(this)}></BreedList>
+        <DogImagesList dogImages={this.state.dogImages}></DogImagesList>
       </React.Fragment>
     )
   }
