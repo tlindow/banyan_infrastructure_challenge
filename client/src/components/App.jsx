@@ -1,13 +1,15 @@
 import React from 'react';
 import BreedList from './BreedList.jsx'
+import BreedSearch from './BreedSearch.jsx'
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
       breedList: [],
-      breedListLength: 12,
+      filteredBreedList: [],
     }
+    this.listSize = 12;
   }
 
   componentDidMount() {
@@ -21,9 +23,19 @@ class App extends React.Component {
           breedListArr.push(breeds);
         }
         this.setState({
-          breedList: breedListArr.slice(0, breedListLength),
+          breedList: breedListArr,
+          filteredBreedList: breedListArr.slice(0, this.listSize),
         });
       });
+  }
+
+  searchBreedList(query) {
+    const filteredBreedList = this.state.breedList.filter(breed => {
+      return breed.includes(query);
+    })
+    this.setState({
+      filteredBreedList: filteredBreedList.slice(0, this.listSize),
+    });
   }
 
   render() {
@@ -32,7 +44,8 @@ class App extends React.Component {
         <h1>
           Breed Names
         </h1>
-        <BreedList breedList={this.state.breedList}></BreedList>
+        <BreedSearch searchBreedList={this.searchBreedList.bind(this)}></BreedSearch>
+        <BreedList breedList={this.state.filteredBreedList}></BreedList>
       </React.Fragment>
     )
   }
