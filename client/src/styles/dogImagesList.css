@@ -1,0 +1,17 @@
+.dog-images-list {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 700px;
+}
+
+.dog-images-list-row {
+  display: flex;
+  flex-direction: row;
+}
+
+img {
+  object-fit: contain;
+  width: 20vw;
+  height: 20vw;
+}
