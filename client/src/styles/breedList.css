@@ -1,0 +1,15 @@
+.breed-list {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 90%;
+}
+
+.breed-list-row {
+  display: flex;
+  flex-direction: row;
+}
+
+button {
+  width: 20vw;
+}
