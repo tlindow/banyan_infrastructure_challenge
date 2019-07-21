@@ -12,4 +12,17 @@
 
 button {
   width: 20vw;
+  margin: 1%
+}
+
+.last-clicked {
+  background-color: #1d7f75;
+  transform: scale(1.1, 1.1);
+}
+
+
+@media only screen and (max-width: 800px) {
+  .btn {
+    font-size: 10px;
+  }
 }
