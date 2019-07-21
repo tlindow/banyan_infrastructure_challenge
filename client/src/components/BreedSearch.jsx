@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/breedSearch.css'
 
 class BreedSearch extends React.Component {
   constructor() {
@@ -19,7 +20,9 @@ class BreedSearch extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <input onChange={(e) => this.handleSearch(e.target.value)}></input>
+        <input className="breed-search" 
+               onChange={(e) => this.handleSearch(e.target.value)}
+               placeholder="Search a dog breed!"></input>
       </React.Fragment>
     );
   }
