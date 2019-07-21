@@ -44,28 +44,26 @@ class App extends React.Component {
   }
 
   handleButtonClick(breed) {
-    if (breed) {
-      if (this.state.cachedDogImages[breed]) {
-        this.setState({
-          dogImages: this.state.cachedDogImages[breed],
-          lastClicked: breed,
+    if (this.state.cachedDogImages[breed]) {
+      this.setState({
+        dogImages: this.state.cachedDogImages[breed],
+        lastClicked: breed,
+      })
+    } else {
+      fetch(`https://dog.ceo/api/breed/${breed}/images`)
+        .then((res) => {
+          return res.json();
         })
-      } else {
-        fetch(`https://dog.ceo/api/breed/${breed}/images`)
-          .then((res) => {
-            return res.json();
-          })
-          .then((json) => {
-            if (!this.cachedDogImages[breed]) {
-              this.cachedDogImages[breed] = json.message;
-            }
-            this.setState({
-              dogImages: json.message,
-              cachedDogImages: this.cachedDogImages,
-              lastClicked: breed,
-            });
+        .then((json) => {
+          if (!this.cachedDogImages[breed]) {
+            this.cachedDogImages[breed] = json.message;
+          }
+          this.setState({
+            dogImages: json.message,
+            cachedDogImages: this.cachedDogImages,
+            lastClicked: breed,
           });
-      }
+        });
     }
   }
 
