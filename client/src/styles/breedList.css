@@ -1,17 +1,12 @@
 .breed-list {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: wrap;
   width: 90%;
 }
 
-.breed-list-row {
-  display: flex;
-  flex-direction: row;
-}
-
 button {
-  width: 20vw;
+  width: 17vw;
   margin: 1%
 }
 
@@ -20,6 +15,10 @@ button {
   transform: scale(1.1, 1.1);
 }
 
+.no-results {
+  color: grey;
+  font-size: 16px;
+}
 
 @media only screen and (max-width: 800px) {
   .btn {
