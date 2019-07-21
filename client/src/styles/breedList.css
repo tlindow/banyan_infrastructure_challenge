@@ -21,7 +21,13 @@ button {
 }
 
 @media only screen and (max-width: 800px) {
+  button {
+    width: 32vw;
+    margin: 2%
+  }
+
   .btn {
     font-size: 10px;
+    font-weight: bold;
   }
 }
