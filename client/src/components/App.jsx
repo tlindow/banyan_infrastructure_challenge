@@ -71,7 +71,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div class='app-container'>
+      <div className='app-container'>
         <h2>
           Dog Pictures!
         </h2>
