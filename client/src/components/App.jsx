@@ -37,33 +37,35 @@ class App extends React.Component {
   searchBreedList(query) {
     const filteredBreedList = this.state.breedList.filter(breed => {
       return breed.includes(query);
-    })
+    });
     this.setState({
       filteredBreedList: filteredBreedList.slice(0, this.listSize),
     });
   }
 
   handleButtonClick(breed) {
-    if (this.state.cachedDogImages[breed]) {
-      this.setState({
-        dogImages: this.state.cachedDogImages[breed],
-        lastClicked: breed,
-      })
-    } else {
-      fetch(`https://dog.ceo/api/breed/${breed}/images`)
-        .then((res) => {
-          return res.json();
+    if (breed) {
+      if (this.state.cachedDogImages[breed]) {
+        this.setState({
+          dogImages: this.state.cachedDogImages[breed],
+          lastClicked: breed,
         })
-        .then((json) => {
-          if (!this.cachedDogImages[breed]) {
-            this.cachedDogImages[breed] = json.message;
-          }
-          this.setState({
-            dogImages: json.message,
-            cachedDogImages: this.cachedDogImages,
-            lastClicked: breed,
+      } else {
+        fetch(`https://dog.ceo/api/breed/${breed}/images`)
+          .then((res) => {
+            return res.json();
+          })
+          .then((json) => {
+            if (!this.cachedDogImages[breed]) {
+              this.cachedDogImages[breed] = json.message;
+            }
+            this.setState({
+              dogImages: json.message,
+              cachedDogImages: this.cachedDogImages,
+              lastClicked: breed,
+            });
           });
-        });
+      }
     }
   }
 
