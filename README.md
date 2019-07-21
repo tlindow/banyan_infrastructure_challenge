@@ -2,7 +2,7 @@
 
 > This projects allows you to search for pictures of different dog breeds!
 
-![alt text](https://raw.githubusercontent.com/tlindow/banyan_infrastructure/master/assets/preview.png)
+![alt text](https://raw.githubusercontent.com/tlindow/banyan_infrastructure_challenge/master/assets/preview.png)
 
 
 ## Steps for local setup
