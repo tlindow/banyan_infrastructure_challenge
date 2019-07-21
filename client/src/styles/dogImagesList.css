@@ -12,6 +12,7 @@
 
 img {
   object-fit: contain;
-  width: 20vw;
-  height: 20vw;
+  width: 27vw;
+  height: 27vw;
+  margin: .5%
 }
