@@ -69,16 +69,16 @@ class App extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
-        <h1>
-          Breed Names
-        </h1>
+      <div class='app-container'>
+        <h2>
+          Dog Pictures!
+        </h2>
         <BreedSearch searchBreedList={this.searchBreedList.bind(this)}></BreedSearch>
         <BreedList breedList={this.state.filteredBreedList}
                    handleButtonClick={this.handleButtonClick.bind(this)}
                    lastClicked={this.state.lastClicked}></BreedList>
         <DogImagesList dogImages={this.state.dogImages}></DogImagesList>
-      </React.Fragment>
+      </div>
     )
   }
 }
