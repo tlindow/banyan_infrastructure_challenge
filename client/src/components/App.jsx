@@ -35,9 +35,14 @@ class App extends React.Component {
   }
 
   searchBreedList(query) {
-    const filteredBreedList = this.state.breedList.filter(breed => {
-      return breed.includes(query);
-    });
+    let filteredBreedList = this.state.breedList.filter(breed => {
+      return breed[0] === query[0] && breed.includes(query);
+    })
+
+    if (!query) {
+      filteredBreedList = this.state.breedList;
+    }
+
     this.setState({
       filteredBreedList: filteredBreedList.slice(0, this.listSize),
     });
