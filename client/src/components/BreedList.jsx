@@ -7,9 +7,9 @@ const BreedList = (props) => (
   <div className="breed-list">
     {props.breedList.map((breed, idx) => {
       if (props.lastClicked === breed) {
-        lastClicked.push("last-clicked");
+        lastClicked.push('last-clicked');
       } else {
-        lastClicked.push("");
+        lastClicked.push('');
       }
  
       if ((idx + 1) % 4 === 0) {
