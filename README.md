@@ -1,4 +1,4 @@
-# banyan_infrastructure_challenge
+# Dog Breed Search using React
 
 > This projects allows you to search for pictures of different dog breeds!
 
