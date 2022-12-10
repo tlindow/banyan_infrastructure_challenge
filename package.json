@@ -19,7 +19,7 @@
   "homepage": "https://github.com/tlindow/banyan_infrastructure_challenge#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   },
